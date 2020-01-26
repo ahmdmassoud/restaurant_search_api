@@ -37,13 +37,14 @@ def read_Json_file(filename):
     return data1
 
 
-# This function checks for the get paramters in the url and returns them else it returns none
+# This function checks for the get paramters in the url if they are not empty and returns them else it returns none
 def extract_paramters(request):
-    if(request.GET.get('q') is not None and
+    if(request.GET.get('q') is not None and 
+       len(request.GET.get('q')) > 0 and
        request.GET.get('lon') is not None and
        request.GET.get('lat') is not None):
         try:
-            q = request.GET.get('q')
+            q = str(request.GET.get('q'))
             lon = float(request.GET.get('lon'))
             lat = float(request.GET.get('lat'))
             return q, lon, lat
@@ -84,10 +85,3 @@ def extract_restaurants(q, lat, lon):
                 selected_restaurants.append(restaurant)
     return selected_restaurants
 
-
-# draft
-# d = distance_calc(60.169938852212965, 24.941325187683105,
-#                  60.17055900339451, 24.93574619293213)
-# return JsonResponse({"ERROR":
-#                     "PLEASE USE THE END POINT /restaurants/search/?q=[[name]]&lat=[[lat]]&lon=[[lon]]"})
-# return JsonResponse(results, safe=False)
