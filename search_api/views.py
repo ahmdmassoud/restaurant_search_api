@@ -5,7 +5,7 @@ import math
 
 # default response for any requests that does not match the main query
 def default(request):
-    return HttpResponse("PLEASE USE THE END POINT /restaurants/search/?q=[[keyword]]&lat=[[latitude]]&lon=[[longitude]", content_type='application/json', status=400)
+    return HttpResponse("PLEASE USE THE END POINT /restaurants/search/?q=[[keyword]]&lat=[[latitude]]&lon=[[longitude],example: /restaurants/search/?q=sushi&lat=60.17045&lon=24.93147 ", content_type='application/json', status=400)
 
 
 # The main view for the API end point
